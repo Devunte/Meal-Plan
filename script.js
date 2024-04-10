@@ -20,21 +20,6 @@ function getRecipeData(){
 });
 }
 
-
-
-// TODO: Create an event that hides the bottom sectioon below the button -Done
-document.addEventListener('DOMContentLoaded', function (){
-    var beginSearchButton= document.getElementById('begin-search');
-    var formContainer= document.querySelector('.form-container');
-
-    formContainer.style.display= 'none';
-
-    beginSearchButton.addEventListener('click', function (event){
-        event.preventDefault();
-        formContainer.style.display = 'block';
-    })
-})
-
 //Todo: Create a function and event that allows you to fill in the form and pull recipes from the api to the local storage once the submit button is pushed. 
 const searchFormEl = document.querySelector('#search-form');
 
