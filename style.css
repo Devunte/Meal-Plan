@@ -4,3 +4,10 @@ body {
   font-weight:300 ;
   font-style:normal 
 }
+
+label {
+    font-family: "Lexend Peta", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:300 ;
+    font-style:normal 
+}
