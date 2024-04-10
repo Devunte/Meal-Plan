@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   font-family: "Lexend Peta", sans-serif;
   font-optical-sizing: auto;
@@ -10,4 +11,8 @@ label {
     font-optical-sizing: auto;
     font-weight:300 ;
     font-style:normal 
+=======
+#form-container{
+    display: none;
+>>>>>>> a3cb1d19e83e346a464bdf7f3374758cbf1c4ee5
 }
