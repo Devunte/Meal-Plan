@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meal Prep Website</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -10,31 +16,84 @@
 </head>
 <body>
 
-<header>
-    <h1>Meal Prep Website</h1>
-    <p>Welcome to our website where you can find delicious recipes for your meal prep!</p>
-</header>
+  <body>
+    <header
+      class="skeleton-lines box is-inline-flex is-size-4 has-text-success hsl(141, 71%, 48%)"
+    >
+      <h1>Meal Prep Website</h1>
+      <p class="pl-6">
+        Welcome to our website where you can find delicious recipes for your
+        meal prep!
+      </p>
+    </header>
+    <section>
+      <img src="">
+      <img src="">
+      <img src="">
+    </section>
 
-<div class="container">
-    <div class="recipe-list">
+    <main
+      class="is-inline-column has-text-centered has-text-success hsl(141, 71%, 48%) pt-6"
+    >
+      <div class="recipe-list">
         <!-- Recipes will appear here -->
         <!-- Example Recipe -->
         <div class="recipe">
-            <h2>Welcome to Meal Prep</h2>
-            <p>We'll give you recipes, blah blah blah.</p>
+          <h2>Welcome to Meal Prep</h2>
+          <p>We'll give you recipes, the ingredients, and everything else you need!</p>
         </div>
     </div>
 
-    <div class="search-bar">
+      <div class="column is-half box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
         <h2>Search</h2>
         <!-- Search form -->
         <form id="search-form">
-            <label for="meal-input">Search for recipes:</label>
-            <input type="text" id="meal-input" name="meal-input" placeholder="Enter meal keywords...">
-            <button type="submit">Search</button>
+          <label for="meal-input">Search for recipes:</label>
+          <input
+            class="input is-danger is-focused is-primary"
+            type="text"
+            id="meal-input"
+            name="meal-input"
+            placeholder=" Enter meal keywords..."
+          />
+          <button class="button is-danger" type="submit">Search</button>
         </form>
-    </div>
-</div>
 
-</body>
+        <!-- Meal inputs -->
+      <main class="column is-half" id="recipe-section">
+        <div class="meal-inputs">
+          <h3>Meal Inputs</h3>
+          <p>Here you can input your desired ingredients for recipes.</p>
+          <!-- Add input fields for meal inputs
+          <label
+            class="is-danger has-text-success hsl(141, 71%, 48%) pt-6 label"
+            for="ingredient1"
+            >Ingredient 1:</label
+          >
+          <input
+            class="input is-danger is-focused is-primary input"
+            type="text"
+            id="ingredient1"
+            name="ingredient1"
+            placeholder="Enter ingredient..."
+          />
+          <label
+            class="is-danger has-text-success hsl(141, 71%, 48%) pt-6 label"
+            for="ingredient2"
+            >Ingredient 2:</label
+          >
+          <input
+            class="input is-danger is-focused is-primary input"
+            type="text"
+            id="ingredient2"
+            name="ingredient2"
+            placeholder="Enter ingredient..."
+          />
+      </main>
+=======
+        </div>
+      </div>
+    </main>
+  </body>
+>>>>>>> 2407f758b31b62a447707722fef86460ca9b97d1
 </html>
