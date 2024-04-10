@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meal Prep Website</title>
     <link
@@ -13,7 +19,9 @@
   </head>
 
   <body>
-    <header class="is-inline-flex is-size-4 has-text-success	hsl(141, 71%, 48%) ">
+    <header
+      class="skeleton-lines box is-inline-flex is-size-4 has-text-success hsl(141, 71%, 48%)"
+    >
       <h1>Meal Prep Website</h1>
       <p class="pl-6">
         Welcome to our website where you can find delicious recipes for your
@@ -21,7 +29,9 @@
       </p>
     </header>
 
-    <main class="is-inline-column has-text-centered has-text-success	hsl(141, 71%, 48%) pt-6">
+    <main
+      class="is-inline-column has-text-centered has-text-success hsl(141, 71%, 48%) pt-6"
+    >
       <div class="recipe-list">
         <!-- Recipes will appear here -->
         <!-- Example Recipe -->
@@ -31,33 +41,44 @@
         </div>
       </div>
 
-      <div class="search-bar">
+      <div class="box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
         <h2>Search</h2>
         <!-- Search form -->
         <form id="search-form">
           <label for="meal-input">Search for recipes:</label>
           <input
+            class="input is-focused is-primary"
             type="text"
             id="meal-input"
             name="meal-input"
             placeholder="Enter meal keywords..."
           />
-          <button type="submit">Search</button>
+          <button class="button is-primary" type="submit">Search</button>
         </form>
         <!-- Meal inputs -->
         <div class="meal-inputs">
           <h3>Meal Inputs</h3>
           <p>Here you can input your desired ingredients for recipes.</p>
           <!-- Add input fields for meal inputs -->
-          <label for="ingredient1">Ingredient 1:</label>
+          <label
+            class="has-text-success hsl(141, 71%, 48%) pt-6 label"
+            for="ingredient1"
+            >Ingredient 1:</label
+          >
           <input
+            class="input is-focused is-primary input"
             type="text"
             id="ingredient1"
             name="ingredient1"
             placeholder="Enter ingredient..."
           />
-          <label for="ingredient2">Ingredient 2:</label>
+          <label
+            class="has-text-success hsl(141, 71%, 48%) pt-6 label"
+            for="ingredient2"
+            >Ingredient 2:</label
+          >
           <input
+            class="input is-focused is-primary input"
             type="text"
             id="ingredient2"
             name="ingredient2"
