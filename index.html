@@ -10,13 +10,11 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meal Prep Website</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="script.js"></script>
-  </head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
 
   <body>
     <header
@@ -47,6 +45,9 @@
             need!
           </p>
         </div>
+    </div>
+
+      <div class="column is-half box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
       </div>
     <section class="pt-6 columns">
       <div
@@ -61,13 +62,17 @@
             type="text"
             id="meal-input"
             name="meal-input"
-            placeholder=" Enter meal keywords..."
+            placeholder="Enter meal keywords..."
           />
           <button class="button is-danger" type="submit">Search</button>
         </form>
+
         <!-- Meal inputs -->
-        <main class="has-text-centered" id="recipie-section">
-          <div class= ="meal-inputs">
+      <main class="column is-half" id="recipe-section">
+        <div class="meal-inputs">
+        <!-- Meal inputs -->
+        <main class="has-text-centered" id="recipe-section">
+          <div class="meal-inputs">
           <h3>Meal Inputs</h3>
           <p>Here you can input your desired ingredients for recipes.</p>
           <label
@@ -75,12 +80,9 @@
             for="ingredient2"
             >Ingredient 2:</label
           >
-          <input
-            class="input is-danger is-focused is-primary input"
-            type="text"
-            id="ingredient2"
-            name="ingredient2"
-          />
+      </main>
+        </div>
+=======
         </main>
       </div>
       <div class="column is-three-fifths box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
@@ -88,4 +90,5 @@
     </section>
     </main>
   </body>
+>>>>>>> 2407f758b31b62a447707722fef86460ca9b97d1
 </html>
