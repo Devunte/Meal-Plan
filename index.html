@@ -1,6 +1,16 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+>>>>>>> 5a4e3bcc581b9b8c770aeeee4426d26e39d00c00
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meal Prep Website</title>
     <link
@@ -11,65 +21,86 @@
   </head>
 
   <body>
-    <header>
+    <header
+      class="skeleton-lines box is-inline-flex is-size-4 has-text-success hsl(141, 71%, 48%)"
+    >
       <h1>Meal Prep Website</h1>
-      <p>
+      <p class="pl-6">
         Welcome to our website where you can find delicious recipes for your
         meal prep!
       </p>
     </header>
+    <section>
+      <img src="">
+      <img src="">
+      <img src="">
+    </section>
 
-    <div class="container" id="container">
+    <main
+      class="is-inline-column has-text-centered has-text-success hsl(141, 71%, 48%) pt-6"
+    >
       <div class="recipe-list">
         <!-- Recipes will appear here -->
         <!-- Example Recipe -->
         <div class="recipe">
           <h2>Welcome to Meal Prep</h2>
-          <input id="begin-search" class="button" type="submit" value="Begin Search" />
-          <p>We'll give you recipes, blah blah blah.</p>
-          
+          <p>We'll give you recipes, the ingredients, and everything else you need!</p>
         </div>
       </div>
 
-    <section class="form-container" id="form-container">
-      <div class="search-bar">
+      <div class="column is-half box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
         <h2>Search</h2>
         <!-- Search form -->
         <form id="search-form">
           <label for="meal-input">Search for recipes:</label>
           <input
+            class="input is-danger is-focused is-primary"
             type="text"
             id="meal-input"
             name="meal-input"
-            placeholder="Enter meal keywords..."
+            placeholder=" Enter meal keywords..."
           />
-          <button class="button btn-info btn-block" type="submit">Search</button>
+          <button class="button is-danger" type="submit">Search</button>
         </form>
+<<<<<<< HEAD
         <!-- Meal inputs -->
-        <div class="meal-inputs">
+      <main class="column is-half" id="recipie-section">
+        <div class= ="meal-inputs">
           <h3>Meal Inputs</h3>
           <p>Here you can input your desired ingredients for recipes.</p>
-          <!-- Add input fields for meal inputs -->
-          <label for="ingredient1">Ingredient 1:</label>
+          <!-- Add input fields for meal inputs
+          <label
+            class="is-danger has-text-success hsl(141, 71%, 48%) pt-6 label"
+            for="ingredient1"
+            >Ingredient 1:</label
+          >
           <input
+            class="input is-danger is-focused is-primary input"
             type="text"
             id="ingredient1"
             name="ingredient1"
             placeholder="Enter ingredient..."
           />
-          <label for="ingredient2">Ingredient 2:</label>
+          <label
+            class="is-danger has-text-success hsl(141, 71%, 48%) pt-6 label"
+            for="ingredient2"
+            >Ingredient 2:</label
+          >
           <input
+            class="input is-danger is-focused is-primary input"
             type="text"
             id="ingredient2"
             name="ingredient2"
             placeholder="Enter ingredient..."
           />
+      </main> 
           <!-- Add more input fields as needed -->
         </div>
       </div>
     </div>
     </section>
     <script src="script.js"></script>
+    </main>
   </body>
 </html>
 
