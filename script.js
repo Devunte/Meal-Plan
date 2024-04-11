@@ -107,3 +107,41 @@ function displayRecipes(recipe) {
     // recipeBody.append(bodyContentEl)
     recipeSection.append(recipeCard);
 }
+let drinkform = document.getElementById('drink-form')
+
+function displayDrink(drink) {
+  console.log(drink)
+}
+// console.log(search);
+function getdrinkData(event) {
+  event.preventDefault()
+  let search = document.getElementById("drink-input").value;
+  const apiKey = `1`;
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Bad network response");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      localStorage.setItem("name", JSON.stringify(data));
+
+      console.log(data.drinks);
+      const drinkSection = document.getElementById("drink-section");
+
+      // Clear previous search results
+      drinkSection.innerHTML = "";
+
+      const drinks = data.drinks;
+      drinks.forEach((drink) => {
+        displayDrink (drink);
+      });
+    })
+    .catch((error) => {
+      console.error("Bad fetch:", error);
+    });
+}
+drinkform.addEventListener("submit", getdrinkData)
