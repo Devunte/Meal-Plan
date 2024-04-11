@@ -14,7 +14,20 @@ function getRecipeData(){
 })
 .then(data => {
     localStorage.setItem('recipes', JSON.stringify(data))
-    console.log(data); 
+
+    console.log(data.hits);
+
+    const recipes = data.hits
+    recipes.forEach(recipe => {
+    displayRecipes (recipe.recipe);
+    
+    })
+
+
+
+
+
+
 })
 .catch(error => {
     console.error('Bad fetch:', error);
@@ -37,5 +50,24 @@ function handleSearchFormSubmit(event){
 }
 searchFormEl.addEventListener('submit',handleSearchFormSubmit);
 
-//Todo: Move the recipe cards from local storage to the query window
+// Todo: Move the recipe cards from local storage to the query window
+function displayRecipes(recipe){
+    console.log(recipe)
+    const recipeSection= document.getElementById('recipe-section')
+
+    const recipeCard= document.createElement ('div');
+    recipeCard.classList.add('card');
+    const recipeBody= document.createElement ('div');
+    recipeBody.classList.add('card-body');
+    recipeCard.append(recipeBody);
+    const titleEl = document.createElement('h3');
+    titleEl.textContent = recipe.label;
+    recipeBody.append(titleEl);
+    const bodyContentEl = document.createElement('p');
+    bodyContentEl.innerHTML = 
+        `<strong>Recipe:</strong>${recipe.ingredients[0].text}`
+        recipeBody.append(bodyContentEl)
+    recipeSection.append(recipeCard);   
+}
+
 
