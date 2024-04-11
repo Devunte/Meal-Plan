@@ -13,3 +13,30 @@ img {
   height: 250px;
   justify-content: center;
 }
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+  padding-bottom: 2%;
+}
+
+.content-container {
+  display: flex;
+}
+
+.ingredients {
+  flex: 1;
+}
+
+.recipe-image {
+  max-width: 100%;
+}
