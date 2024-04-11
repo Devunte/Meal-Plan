@@ -56,11 +56,54 @@ function displayRecipes(recipe) {
   const recipeBody = document.createElement("div");
   recipeBody.classList.add("card-body");
   recipeCard.append(recipeBody);
+
+  // Container for ingredients and image
+  const contentContainer = document.createElement("div");
+  contentContainer.classList.add("content-container");
+  recipeBody.append(contentContainer);
+
+  // Ingredients
+  const ingredientsContainer = document.createElement("div");
+  ingredientsContainer.classList.add("ingredients");
+  ingredientsContainer.style.flex = "1";
+  contentContainer.append(ingredientsContainer);
+  recipe.ingredients.forEach((ingredient) => {
+    const ingredientEl = document.createElement("p");
+    ingredientEl.textContent = ingredient.text;
+    ingredientsContainer.append(ingredientEl);
+  });
+
+  // Image
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("image-container");
+  contentContainer.append(imageContainer);
+
+  const imageUrl = document.createElement("a");
+  imageUrl.href = recipe.url;
+  imageUrl.target = "_blank";
+  imageContainer.append(imageUrl);
+
+  const imageEl = document.createElement("img");
+  imageEl.src = recipe.image;
+  imageEl.classList.add("recipe-image");
+  imageEl.style.maxWidth = "100%";
+  imageEl.addEventListener("click", () => {
+    window.open(recipe.url, "_blank");
+  });
+  imageUrl.append(imageEl);
+  const imgMessageEl = document.createElement("p");
+  imgMessageEl.textContent = "Click the image for the full recipe!";
+  imageContainer.append(imgMessageEl);
+
+  //Title
   const titleEl = document.createElement("h3");
   titleEl.textContent = recipe.label;
-  recipeBody.append(titleEl);
+  recipeBody.prepend(titleEl);
+
+  //Body
   const bodyContentEl = document.createElement("p");
-  bodyContentEl.innerHTML = `<strong>Recipe:</strong>${recipe.ingredients[0].text}`;
-  recipeBody.append(bodyContentEl);
-  recipeSection.append(recipeCard);
+  bodyContentEl.innerHTML =
+    // `<strong>Recipe:</strong>${recipe.ingredients[0].text}`
+    // recipeBody.append(bodyContentEl)
+    recipeSection.append(recipeCard);
 }
