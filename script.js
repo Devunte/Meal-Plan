@@ -1,8 +1,9 @@
-let search=''
+let searchInput= document.getElementById('meal-input').value;
+console.log(searchInput);
 function getRecipeData(){
     const apiKey= `5ca76f850838b3aa7817d13c9750a1a5`
     const apiId= `6245cd9b`
-    const url=  `https://api.edamam.com/search?q=${search}&app_id=${apiId}&app_key=${apiKey}`
+    const url=  `https://api.edamam.com/search?q=${searchInput}&app_id=${apiId}&app_key=${apiKey}`
     
     fetch(url)
     .then(response => {
@@ -25,9 +26,9 @@ const searchFormEl = document.querySelector('#search-form');
 
 function handleSearchFormSubmit(event){
     event.preventDefault();
-    search= document.getElementById('meal-input').value;
-    
-    if (!search){
+    searchInput= document.getElementById('meal-input').value
+
+    if (!searchInput){
         console.error('Input search value')
         return
     }
