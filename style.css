@@ -1,3 +1,20 @@
+
+*{
+  margin: 2px;
+}
+header{
+  margin: 0.5%;
+}
+
+nav a{
+  text-decoration: none;
+  color: inherit;
+}
+
+
+#form-container{
+    display: none;
+
 * {
   margin: 2px;
 }
@@ -10,6 +27,7 @@ nav a {
 }
 #form-container {
   display: none;
+
 }
 body {
   font-family: "Lexend Peta", sans-serif;
@@ -35,6 +53,15 @@ h3 {
   text-transform: uppercase;
   padding-bottom: 2%;
 }
+
+
+.title-container{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+
 .content-container {
   display: flex;
 }
