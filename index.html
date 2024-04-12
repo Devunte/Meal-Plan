@@ -17,13 +17,6 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-
-    <header class="is-flex is-justify-content-space-between is-align-items-center is-size-2 has-text-success hsl(141, 71%, 48%)">
-      <h1>Meal Prep Website</h1>
-      <nav><a href="#favorites">Favorites</a></nav>
-    </header>
-    <section class="is-flex is-justify-content-center is-align-items-center pt-6">
-
     <header
       class="is-flex is-justify-content-space-between is-align-items-center is-size-2 has-text-success hsl(141, 71%, 48%)"
     >
@@ -33,12 +26,11 @@
     <section
       class="is-flex is-justify-content-center is-align-items-center pt-6"
     >
-
       <img src="chicekn.jpg" />
       <img src="cocktails.jpg" />
       <img src="Greens.jpg" />
     </section>
- 
+
     <main
       class="is-inline-column has-text-centered has-text-success hsl(141, 71%, 48%) pt-6"
     >
@@ -53,57 +45,6 @@
           </p>
         </div>
       </div>
-
-    <section class="pt-6 columns">
-      <div class="column is-one-fifth box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
-        <h2>Search</h2>
-        <!-- Search form -->
-        <form class="pb-6" id="search-form">
-          <label >Search for recipes:</label>
-          <input
-            class="input is-danger is-focused is-primary"
-            type="text"
-            id="meal-input"
-            name="meal-input"
-            placeholder="Enter meal keywords..."
-          />
-          <button class="button is-danger" type="submit">Search</button>
-        </form>
-        <h2>Search</h2>
-        <form id="drink-form">
-        <label class="mt-6" >Search for drinks:</label>
-        <input
-          class="input is-danger is-focused is-primary"
-          type="text"
-          id="drink-input"
-          name="drink-input"
-          placeholder="Enter drink keywords..."
-        />
-        <button class="button is-danger" type="submit">Search</button>
-      </form>
-       <!-- Meal inputs -->
-    </div>
-    <div class="column is-two-fifths box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
-      <main class="has-text-centered" id="recipe-section">
-        <!-- Recipes will load here -->
-        </main>
-    </div>
-    <div class="column is-two-fifths box has-text-success hsl(141, 71%, 48%) pt-6 search-bar">
-      <main class="has-text-centered" id="drink-section">
-        <!-- Drinks will load here -->
-        </main>
-    </div>
-  </section>
-  <!-- Favorites section for meals and drinks -->
-  <section class="favorites" id="favorites">
-    <h1>Favorites</h1>
-    <div id="favorites-container"></div>
-  </section>
-  </main>
-  <script src="script.js"></script>
-</body>
-</html>
-
 
       <section class="pt-6 columns">
         <div
@@ -154,9 +95,9 @@
       <!-- Favorites section for meals and drinks -->
       <section class="favorites" id="favorites">
         <h1>Favorites</h1>
+        <div id="favorites-container"></div>
       </section>
     </main>
     <script src="script.js"></script>
   </body>
 </html>
-
