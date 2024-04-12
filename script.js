@@ -57,7 +57,26 @@ function displayRecipes(recipe) {
   const recipeBody = document.createElement("div");
   recipeBody.classList.add("card-body");
   recipeCard.append(recipeBody);
+  // Title and favorites container
+  const titleContainer = document.createElement("div");
+  titleContainer.classList.add("title-container");
+  recipeBody.append(titleContainer);
 
+  //Title
+  const titleEl = document.createElement("h3");
+  titleEl.textContent = recipe.label;
+  titleContainer.append(titleEl);
+
+  // Favorites
+  const favButton = document.createElement("button");
+  favButton.classList.add("btn", "btn-outline-primary", "btn-favorite");
+  favButton.innerHTML = "+";
+  favButton.addEventListener("click", () => {
+    addToFavorites(recipe);
+    console.log("Add to favorites clicked");
+    displayFavorites();
+  });
+  titleContainer.append(favButton);
   // Container for ingredients and image
   const contentContainer = document.createElement("div");
   contentContainer.classList.add("content-container");
@@ -97,7 +116,6 @@ function displayRecipes(recipe) {
   imageContainer.append(imgMessageEl);
 
   //Title
-  const titleEl = document.createElement("h3");
   titleEl.textContent = recipe.label;
   recipeBody.prepend(titleEl);
 
@@ -147,9 +165,6 @@ function displayFavoriteRecipe(recipe, container) {
   container.appendChild(recipeCard);
 }
 
-function displayDrink(drink) {
-  console.log(drink);
-}
 // console.log(search);
 function getdrinkData(event) {
   event.preventDefault();
@@ -178,7 +193,8 @@ function getdrinkData(event) {
         displayDrink(drink);
       });
     });
-
+}
+function displayDrink(drink) {
   const drinkSection = document.getElementById("drink-section");
 
   // Create a div element to hold the drink details
