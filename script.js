@@ -102,22 +102,46 @@ function displayRecipes(recipe) {
 
   //Body
   const bodyContentEl = document.createElement("p");
-  bodyContentEl.innerHTML =
-    // `<strong>Recipe:</strong>${recipe.ingredients[0].text}`
-    // recipeBody.append(bodyContentEl)
-    recipeSection.append(recipeCard);
+  bodyContentEl.innerHTML = `<strong>Recipe:</strong>${recipe.ingredients[0].text}`;
+  recipeBody.append(bodyContentEl);
+  recipeSection.append(recipeCard);
 }
-let drinkform = document.getElementById('drink-form')
+let drinkform = document.getElementById("drink-form");
 
 function displayDrink(drink) {
-  console.log(drink)
+  console.log(drink);
+
+  const drinkSection = document.getElementById("drink-section");
+
+  // Create a div element to hold the drink details
+  const drinkDetails = document.createElement("div");
+
+  // Display the drink title
+  const drinkTitle = document.createElement("h3");
+  drinkTitle.textContent = drink.strDrink;
+  drinkDetails.appendChild(drinkTitle);
+
+  // Display the drink instructions
+  const drinkInstructions = document.createElement("p");
+  drinkInstructions.textContent = drink.strInstructions;
+  drinkDetails.appendChild(drinkInstructions);
+
+  // Display the drink image
+  const drinkImage = document.createElement("img");
+  drinkImage.style.width = "150px";
+  drinkImage.src = drink.strDrinkThumb;
+  drinkImage.alt = drink.strDrink;
+  drinkDetails.appendChild(drinkImage);
+
+  drinkSection.appendChild(drinkDetails);
 }
 // console.log(search);
 function getdrinkData(event) {
-  event.preventDefault()
+  event.preventDefault();
   let search = document.getElementById("drink-input").value;
   const apiKey = `1`;
   const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
+  console.log(search);
 
   fetch(url)
     .then((response) => {
@@ -130,18 +154,18 @@ function getdrinkData(event) {
       localStorage.setItem("name", JSON.stringify(data));
 
       console.log(data.drinks);
-      const drinkSection = document.getElementById("drink-section");
-
       // Clear previous search results
+      const drinkSection = document.getElementById("drink-section");
       drinkSection.innerHTML = "";
 
       const drinks = data.drinks;
       drinks.forEach((drink) => {
-        displayDrink (drink);
+        displayDrink(drink);
       });
     })
     .catch((error) => {
       console.error("Bad fetch:", error);
     });
 }
-drinkform.addEventListener("submit", getdrinkData)
+
+drinkform.addEventListener("submit", getdrinkData);
