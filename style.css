@@ -1,27 +1,22 @@
-*{
+* {
   margin: 2px;
 }
-header{
+header {
   margin: 0.5%;
 }
-
-nav a{
+nav a {
   text-decoration: none;
   color: inherit;
 }
-
-
-#form-container{
-    display: none;
+#form-container {
+  display: none;
 }
 body {
   font-family: "Lexend Peta", sans-serif;
   font-optical-sizing: auto;
-  font-weight:300 ;
-  font-style:normal
+  font-weight: 300;
+  font-style: normal;
 }
-
-
 
 img {
   width: 460px;
@@ -33,18 +28,16 @@ img {
   border-radius: 5px;
   margin-bottom: 20px;
 }
-
 .card-body {
   padding: 20px;
 }
-
 h3 {
   margin-top: 0;
   text-transform: uppercase;
   padding-bottom: 2%;
 }
 
-.title-container{
+.title-container {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -53,11 +46,9 @@ h3 {
 .content-container {
   display: flex;
 }
-
 .ingredients {
   flex: 1;
 }
-
 .recipe-image {
   max-width: 100%;
 }
