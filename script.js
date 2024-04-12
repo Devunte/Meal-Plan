@@ -16,18 +16,16 @@ function getRecipeData(){
     localStorage.setItem('recipes', JSON.stringify(data))
 
     console.log(data.hits);
+    const recipeSection = document.getElementById("recipe-section");
+
+      // Clear previous search results
+    recipeSection.innerHTML = "";;
 
     const recipes = data.hits
     recipes.forEach(recipe => {
     displayRecipes (recipe.recipe);
     
     })
-
-
-
-
-
-
 })
 .catch(error => {
     console.error('Bad fetch:', error);
@@ -46,7 +44,7 @@ function handleSearchFormSubmit(event){
         return
     }
     getRecipeData();
-
+   
 }
 searchFormEl.addEventListener('submit',handleSearchFormSubmit);
 
@@ -60,7 +58,28 @@ function displayRecipes(recipe){
     const recipeBody= document.createElement ('div');
     recipeBody.classList.add('card-body');
     recipeCard.append(recipeBody);
-   
+
+    // Title and favorites container
+    const titleContainer= document.createElement ('div');
+    titleContainer.classList.add('title-container');
+    recipeBody.append(titleContainer);
+
+    //Title 
+    const titleEl = document.createElement('h3');
+    titleEl.textContent = recipe.label;
+    titleContainer.append(titleEl);
+
+    // Favorites
+    const favButton = document.createElement('button');
+    favButton.classList.add('btn', 'btn-outline-primary', 'btn-favorite');
+    favButton.innerHTML = '+'; 
+    favButton.addEventListener('click', () => {
+        addToFavorites(recipe);
+    console.log('Add to favorites clicked');
+    displayFavorites();
+    });
+    titleContainer.append(favButton); 
+
     // Container for ingredients and image
     const contentContainer = document.createElement('div');
     contentContainer.classList.add('content-container');
@@ -100,17 +119,86 @@ function displayRecipes(recipe){
         imgMessageEl.textContent= 'Click the image for the full recipe!'
         imageContainer.append(imgMessageEl);
     
-    //Title 
-    const titleEl = document.createElement('h3');
-        titleEl.textContent = recipe.label;
-        recipeBody.prepend(titleEl);
-    
-    //Body
-    const bodyContentEl = document.createElement('p');
-    bodyContentEl.innerHTML = 
-        // `<strong>Recipe:</strong>${recipe.ingredients[0].text}`
-        // recipeBody.append(bodyContentEl)
-    recipeSection.append(recipeCard);   
+    //Body of the whole card
+    recipeSection.append(recipeCard) ;  
 }
+// Favorites section
+function addToFavorites(recipe){
+    let favorites= JSON.parse(localStorage.getItem('favorites'))||[];
+    favorites.push(recipe);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+}
+document.addEventListener('DOMContentLoaded', ()=>{
+    displayFavorites();
+});
+// Display the recipes in the favorites section
+function displayFavorites(){
+    const favoritesContainer= document.getElementById('favorites-container');
+    favoritesContainer.innerHTML= '';
+    console.log('made favorite')
+
+    const favorites= JSON.parse(localStorage.getItem('favorites'))||[];
+    favorites.forEach(recipe=>{
+        displayFavoriteRecipe(recipe, favoritesContainer);
+    })
+}
+function displayFavoriteRecipe (recipe, container){
+    const titleLink= document.createElement('a');
+    titleLink.textContent= recipe.label;
+    titleLink.href= recipe.url;
+    titleLink.target= '_blank';
+    console.log('made stuff')
+
+    const recipeCard=document.createElement('div');
+    recipeCard.classList.add('favorite-card')
+    recipeCard.style.display= 'block';
+    recipeCard.style.border= '1px solid grey';
+    recipeCard.style.padding= '10px';
+    recipeCard.style.marginBottom= '10px';
+
+    recipeCard.appendChild(titleLink);
+    container.appendChild(recipeCard);
+
+}
+
+// Start of the drink section
+let drinkform = document.getElementById('drink-form')
+
+function displayDrink(drink) {
+  console.log(drink)
+}
+// console.log(search);
+function getdrinkData(event) {
+  event.preventDefault()
+  let search = document.getElementById("drink-input").value;
+  const apiKey = `1`;
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Bad network response");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      localStorage.setItem("name", JSON.stringify(data));
+
+      console.log(data.drinks);
+      const drinkSection = document.getElementById("drink-section");
+
+      // Clear previous search results
+      drinkSection.innerHTML = "";
+
+      const drinks = data.drinks;
+      drinks.forEach((drink) => {
+        displayDrink (drink);
+      });
+    })
+    .catch((error) => {
+      console.error("Bad fetch:", error);
+    });
+}
+drinkform.addEventListener("submit", getdrinkData)
 
 
