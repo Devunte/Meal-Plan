@@ -121,7 +121,6 @@ function displayRecipes(recipe) {
 
   //Body
   const bodyContentEl = document.createElement("p");
-  bodyContentEl.innerHTML = `<strong>Recipe:</strong>${recipe.ingredients[0].text}`;
   recipeBody.append(bodyContentEl);
   recipeSection.append(recipeCard);
 }
