@@ -28,9 +28,11 @@ Myron Lucan
 Christopher Lee Blue 
 
 
-Databases Used:
+## Databases Used:
 
 https://developer.edamam.com/edamam-docs-nutrition-api - This system conducts real-time analysis of food recipes, extracting entities, measures, quantities, applicable nutrition, health labels, and classifying recipes by cuisine, meal, and dish type. Additionally, it adjusts ingredient quantities to accommodate cooking processes such as oil absorption for frying, solid exclusion for stocks and broths, and marinate absorption for marinades.
 
 https://www.thecocktaildb.com/ - An open, crowd-sourced database of drinks and cocktails from around the world. Grabs instructions and different items used in order to create the drink of your choice. 
+
+https://bulma.io/ - Bulma is a free, open source framework that provides ready-to-use frontend components that you can easily combine to build responsive web interfaces.
 
