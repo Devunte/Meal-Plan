@@ -7,7 +7,6 @@
 
 body {
   font-family: "Lexend Peta", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   background-color: #f9f9f9;
@@ -48,4 +47,101 @@ img {
   border-radius: 5px;
   margin-bottom: 20px;
   background-color: white;
-  box-shadow: 2px 2px 6px rgba
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  text-transform: uppercase;
+  padding-bottom: 2%;
+}
+
+.title-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+}
+
+.ingredients {
+  flex: 1;
+}
+
+.recipe-image {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.recipe h1 {
+  text-decoration: underline 2px grey;
+  margin-bottom: 5px;
+}
+
+#favorites-container a {
+  color: grey;
+}
+
+.favorites h1 {
+  text-decoration: underline 2px grey;
+}
+
+.about h1 {
+  text-decoration: underline 2px grey;
+  margin-bottom: 5px;
+}
+
+.about p {
+  margin: 8px;
+}
+
+.about a {
+  color: grey;
+}
+
+.about li {
+  margin: 10px;
+}
+
+/* Scrollable Containers */
+#recipe-section,
+#drink-section {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+#recipe-section .card,
+#drink-section .card {
+  flex: 0 0 auto;
+  width: 300px;
+}
+
+/* Favorites Section */
+#favorites-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.favorite-card {
+  border: 1px solid grey;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
