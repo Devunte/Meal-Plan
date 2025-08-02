@@ -1,115 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meal Prep Website</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recipe & Drink Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-  <body>
-    <header class="is-flex is-justify-content-space-between is-align-items-center has-background-success-light p-4">
-      <h1 class="title has-text-success-dark">Meal Prep</h1>
-      <nav>
-        <a href="#favorites" class="has-text-success-dark">Favorites</a> |
-        <a href="#about" class="has-text-success-dark">About</a>
-      </nav>
-    </header>
+  <header>
+    <h1>Food & Drink Finder</h1>
+    <nav>
+      <a href="#recipe-section">Recipes</a> |
+      <a href="#drink-section">Drinks</a> |
+      <a href="#favorites-container">Favorites</a> |
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
-    <section class="is-flex is-justify-content-center is-align-items-center p-4">
-      <img src="chicekn.jpg" alt="Chicken" class="image mx-2" />
-      <img src="cocktails.jpg" alt="Cocktails" class="image mx-2" />
-      <img src="Greens.jpg" alt="Greens" class="image mx-2" />
+  <main>
+
+    <!-- Recipe Scroll Section -->
+    <section id="recipe-section" class="box scroll-x">
+      <!-- JS will inject recipe cards here -->
     </section>
 
-    <main class="section has-text-centered">
-      <div class="box has-background-success-light">
-        <h1 class="title">Welcome to Meal Prep</h1>
-        <p class="subtitle">
-          We'll give you recipes, the ingredients, and everything else you
-          need!
-        </p>
-      </div>
+    <!-- Drink Scroll Section -->
+    <section id="drink-section" class="box scroll-x">
+      <!-- JS will inject drink cards here -->
+    </section>
 
-      <section class="columns mt-6">
-        <!-- Search Column -->
-        <div class="column is-one-fifth">
-          <div class="box">
-            <h2 class="subtitle">Meal Search</h2>
-            <form id="search-form" class="mb-4">
-              <input
-                class="input is-primary"
-                type="text"
-                id="meal-input"
-                name="meal-input"
-                placeholder="Enter meal keywords..."
-              />
-              <button class="button is-success mt-2" type="submit">Search</button>
-            </form>
+    <!-- Favorites Section -->
+    <section id="favorites-container" class="favorites">
+      <h1>Saved Favorites</h1>
+      <!-- JS will inject saved favorite cards here -->
+    </section>
 
-            <h2 class="subtitle">Drink Search</h2>
-            <form id="drink-form">
-              <input
-                class="input is-primary"
-                type="text"
-                id="drink-input"
-                name="drink-input"
-                placeholder="Enter drink keywords..."
-              />
-              <button class="button is-success mt-2" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h1>About This App</h1>
+      <p>This app allows you to explore meals and drinks using free APIs. Scroll through selections and click for details. You can also save your favorites!</p>
+      <ul>
+        <li>Recipes from TheMealDB</li>
+        <li>Drinks from TheCocktailDB</li>
+        <li>Made with HTML, CSS, JS</li>
+      </ul>
+    </section>
 
-        <!-- Recipes Display -->
-        <div class="column is-two-fifths">
-          <div class="box" id="recipe-section">
-            <!-- Recipes will be inserted here -->
-          </div>
-        </div>
+  </main>
 
-        <!-- Drinks Display -->
-        <div class="column is-two-fifths">
-          <div class="box" id="drink-section">
-            <!-- Drinks will be inserted here -->
-          </div>
-        </div>
-      </section>
-
-      <!-- Favorites Section -->
-      <section class="section" id="favorites">
-        <h1 class="title has-text-success-dark">Favorites</h1>
-        <div class="box" id="favorites-container">
-          <!-- Favorites will be shown here -->
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <footer class="section" id="about">
-        <h1 class="title">About the Developers</h1>
-        <p class="subtitle">Click the names below to see their portfolios:</p>
-        <ul>
-          <li><a href="#">- Christopher Blue -</a></li>
-          <li>
-            <a href="https://devunte.github.io/Portfolio/">- Devunte Dawson -</a>
-          </li>
-          <li>
-            <a href="https://mlucan2.github.io/myron-professional-portfolio/">- Myron Lucan -</a>
-          </li>
-        </ul>
-      </footer>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
+</body>
 </html>
