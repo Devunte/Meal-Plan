@@ -2,31 +2,36 @@
   margin: 2px;
   padding: 1%;
   text-transform: uppercase;
+  box-sizing: border-box;
 }
-header {
-  margin: .5%;
-  border-bottom: 3px solid grey;
-  
-}
-header h1{
-  font-size: 70px;
-  text-shadow: 2px 2px 2px grey;
-}
-nav a {
-  text-decoration: none;
-  color: inherit;
-  text-shadow: 2px 2px 2px grey;
-}
-#form-container {
-  display: none;
-}
-
 
 body {
   font-family: "Lexend Peta", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header {
+  margin: 0.5%;
+  border-bottom: 3px solid grey;
+}
+
+header h1 {
+  font-size: 70px;
+  text-shadow: 2px 2px 2px grey;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  text-shadow: 2px 2px 2px grey;
+}
+
+#form-container {
+  display: none;
 }
 
 img {
@@ -36,63 +41,11 @@ img {
   box-shadow: 2px 2px 2px grey;
   margin: 40px;
   border-radius: 5px;
-  
 }
 
 .card {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin-bottom: 20px;
-}
-.card-body {
-  padding: 20px;
-}
-h3 {
-  margin-top: 0;
-  text-transform: uppercase;
-  padding-bottom: 2%;
-}
-
-.title-container {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-}
-
-.content-container {
-  display: flex;
-}
-.ingredients {
-  flex: 1;
-}
-.recipe-image {
-  max-width: 100%;
-}
-.recipe h1{
-  text-decoration: underline 2px grey;
-  margin-bottom: 5px;
-
-
-}
-#favorites-container a{
-  color: grey;
-
-}
-
-.favorites h1{
-  text-decoration: underline 2px grey;
-}
-
-.about h1{
-  text-decoration: underline 2px grey;
-  margin-bottom: 5px;
-}
-.about p{
-  margin: 8px;
-}
-.about a{
-  color: grey;
-}
-.about li{
-  margin: 10px;
-}
+  background-color: white;
+  box-shadow: 2px 2px 6px rgba
