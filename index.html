@@ -21,9 +21,27 @@
 
   <main>
 
+    <!-- Recipe Search Form -->
+    <section>
+      <form id="search-form">
+        <label for="meal-input">Search Meal:</label>
+        <input type="text" id="meal-input" placeholder="e.g. Chicken Alfredo" required />
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
     <!-- Recipe Scroll Section -->
     <section id="recipe-section" class="box scroll-x">
       <!-- JS will inject recipe cards here -->
+    </section>
+
+    <!-- Drink Search Form -->
+    <section>
+      <form id="drink-form">
+        <label for="drink-input">Search Drink:</label>
+        <input type="text" id="drink-input" placeholder="e.g. Margarita" required />
+        <button type="submit">Search</button>
+      </form>
     </section>
 
     <!-- Drink Scroll Section -->
@@ -32,23 +50,4 @@
     </section>
 
     <!-- Favorites Section -->
-    <section id="favorites-container" class="favorites">
-      <h1>Saved Favorites</h1>
-      <!-- JS will inject saved favorite cards here -->
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-      <h1>About This App</h1>
-      <p>This app allows you to explore meals and drinks using free APIs. Scroll through selections and click for details. You can also save your favorites!</p>
-      <ul>
-        <li>Recipes from TheMealDB</li>
-        <li>Drinks from TheCocktailDB</li>
-        <li>Made with HTML, CSS, JS</li>
-      </ul>
-    </section>
-
-  </main>
-
-</body>
-</html>
+    <section id="favorites-container" class="f
