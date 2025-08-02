@@ -1,6 +1,10 @@
-// Search meal form and handler
-const searchFormEl = document.querySelector("#search-form");
-searchFormEl.addEventListener("submit", handleSearchFormSubmit);
+document.addEventListener("DOMContentLoaded", () => {
+  const searchFormEl = document.querySelector("#search-form");
+  searchFormEl.addEventListener("submit", handleSearchFormSubmit);
+
+  const drinkform = document.getElementById("drink-form");
+  drinkform.addEventListener("submit", getdrinkData);
+});
 
 function handleSearchFormSubmit(event) {
   event.preventDefault();
@@ -13,10 +17,6 @@ function handleSearchFormSubmit(event) {
 
   getRecipeData(searchInput);
 }
-
-// Search drink form and handler
-const drinkform = document.getElementById("drink-form");
-drinkform.addEventListener("submit", getdrinkData);
 
 function getdrinkData(event) {
   event.preventDefault();
@@ -47,7 +47,6 @@ function getdrinkData(event) {
     .catch((err) => console.error("Fetch error:", err));
 }
 
-// Meal fetch and display
 function getRecipeData(searchInput) {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
 
@@ -73,7 +72,6 @@ function getRecipeData(searchInput) {
     });
 }
 
-// Display meal
 function displayRecipes(meal) {
   const recipeSection = document.getElementById("recipe-section");
 
@@ -110,7 +108,6 @@ function displayRecipes(meal) {
   recipeSection.appendChild(card);
 }
 
-// Display drink
 function displayDrink(drink) {
   const drinkSection = document.getElementById("drink-section");
 
