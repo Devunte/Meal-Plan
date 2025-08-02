@@ -1,248 +1,136 @@
-let searchInput = document.getElementById("meal-input").value;
-console.log(searchInput);
-
-function getRecipeData() {
-  const apiKey = `5ca76f850838b3aa7817d13c9750a1a5`;
-  const apiId = `6245cd9b`;
-  const url = `https://api.edamam.com/search?q=${searchInput}&app_id=${apiId}&app_key=${apiKey}`;
-
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Bad network response");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      localStorage.setItem("recipes", JSON.stringify(data));
-
-      console.log(data.hits);
-      const recipeSection = document.getElementById("recipe-section");
-
-      // Clear previous search results
-      recipeSection.innerHTML = "";
-
-      const recipes = data.hits;
-      recipes.forEach((recipe) => {
-        displayRecipes(recipe.recipe);
-      });
-    })
-    .catch((error) => {
-      console.error("Bad fetch:", error);
-    });
-}
-
-// fetch(url)
-//   .then((response)=> {
-//     if (!response.ok) {
-//       throw new Error("bad netowrk response");
-//     }
-//     return response.json();
-//   })
-//   .then((data) => {
-//     localStorage.setItem("", json.stringify(data));
-
-//     console.log(data.hits);
-//     const recipeSection = document.getElementById("");
-
-//     recipeSection = document.getElementById("");
-
-//     recipeSection.innerHTML = "";
-
-//     const recipes = data.hits;
-//     recipes.forEach((recipe) => {
-//       displayRecipes(recipe.recipie);
-//     });
-//   })
-//     .catch((error) => {
-//       console.error("Bad fetch:", error);
-//     })
-//   };
-//Todo: Create a function and event that allows you to fill in the form and pull recipes from the api to the local storage once the submit button is pushed.
+// Search meal form and handler
 const searchFormEl = document.querySelector("#search-form");
+searchFormEl.addEventListener("submit", handleSearchFormSubmit);
 
 function handleSearchFormSubmit(event) {
   event.preventDefault();
-  searchInput = document.getElementById("meal-input").value;
+  const searchInput = document.getElementById("meal-input").value.trim();
 
   if (!searchInput) {
-    console.error("Input search value");
+    console.error("Please enter a meal name.");
     return;
   }
-  getRecipeData();
-}
-searchFormEl.addEventListener("submit", handleSearchFormSubmit);
 
-// Todo: Move the recipe cards from local storage to the query window
-function displayRecipes(recipe) {
-  console.log(recipe);
-  const recipeSection = document.getElementById("recipe-section");
-
-  const recipeCard = document.createElement("div");
-  recipeCard.classList.add("card");
-  const recipeBody = document.createElement("div");
-  recipeBody.classList.add("card-body");
-  recipeCard.append(recipeBody);
-  // Title and favorites container
-  const titleContainer = document.createElement("div");
-  titleContainer.classList.add("title-container");
-  recipeBody.append(titleContainer);
-
-  //Title
-  const titleEl = document.createElement("h3");
-  titleEl.textContent = recipe.label;
-  titleContainer.append(titleEl);
-
-  // Favorites
-  const favButton = document.createElement("button");
-  favButton.classList.add("btn", "btn-outline-primary", "btn-favorite");
-  favButton.innerHTML = "+";
-  favButton.addEventListener("click", () => {
-    addToFavorites(recipe);
-    console.log("Add to favorites clicked");
-    displayFavorites();
-  });
-  titleContainer.append(favButton);
-  // Container for ingredients and image
-  const contentContainer = document.createElement("div");
-  contentContainer.classList.add("content-container");
-  recipeBody.append(contentContainer);
-
-  // Ingredients
-  const ingredientsContainer = document.createElement("div");
-  ingredientsContainer.classList.add("ingredients");
-  ingredientsContainer.style.flex = "1";
-  contentContainer.append(ingredientsContainer);
-  recipe.ingredients.forEach((ingredient) => {
-    const ingredientEl = document.createElement("p");
-    ingredientEl.textContent = ingredient.text;
-    ingredientsContainer.append(ingredientEl);
-  });
-
-  // Image
-  const imageContainer = document.createElement("div");
-  imageContainer.classList.add("image-container");
-  contentContainer.append(imageContainer);
-
-  const imageUrl = document.createElement("a");
-  imageUrl.href = recipe.url;
-  imageUrl.target = "_blank";
-  imageContainer.append(imageUrl);
-
-  const imageEl = document.createElement("img");
-  imageEl.src = recipe.image;
-  imageEl.classList.add("recipe-image");
-  imageEl.style.maxWidth = "100%";
-  imageEl.addEventListener("click", () => {
-    window.open(recipe.url, "_blank");
-  });
-  imageUrl.append(imageEl);
-  const imgMessageEl = document.createElement("p");
-  imgMessageEl.textContent = "Click the image for the full recipe!";
-  imageContainer.append(imgMessageEl);
-
-  //Title
-  titleEl.textContent = recipe.label;
-  recipeBody.prepend(titleEl);
-
-  //Body
-  const bodyContentEl = document.createElement("p");
-  recipeBody.append(bodyContentEl);
-  recipeSection.append(recipeCard);
-}
-let drinkform = document.getElementById("drink-form");
-
-// Favorites section
-function addToFavorites(recipe) {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  favorites.push(recipe);
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-}
-document.addEventListener("DOMContentLoaded", () => {
-  displayFavorites();
-});
-// Display the recipes in the favorites section
-function displayFavorites() {
-  const favoritesContainer = document.getElementById("favorites-container");
-  favoritesContainer.innerHTML = "";
-  console.log("made favorite");
-
-  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  favorites.forEach((recipe) => {
-    displayFavoriteRecipe(recipe, favoritesContainer);
-  });
-}
-function displayFavoriteRecipe(recipe, container) {
-  const titleLink = document.createElement("a");
-  titleLink.textContent = recipe.label;
-  titleLink.href = recipe.url;
-  titleLink.target = "_blank";
-  console.log("made stuff");
-
-  const recipeCard = document.createElement("div");
-  recipeCard.classList.add("favorite-card");
-  recipeCard.style.display = "block";
-  recipeCard.style.border = "1px solid grey";
-  recipeCard.style.padding = "10px";
-  recipeCard.style.marginBottom = "10px";
-
-  recipeCard.appendChild(titleLink);
-  container.appendChild(recipeCard);
+  getRecipeData(searchInput);
 }
 
-// console.log(search);
+// Search drink form and handler
+const drinkform = document.getElementById("drink-form");
+drinkform.addEventListener("submit", getdrinkData);
+
 function getdrinkData(event) {
   event.preventDefault();
-  let search = document.getElementById("drink-input").value;
-  const apiKey = `1`;
-  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
+  const search = document.getElementById("drink-input").value.trim();
+  if (!search) {
+    console.error("Please enter a drink name.");
+    return;
+  }
 
+  const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`;
   fetch(url)
     .then((response) => {
-      if (!response.ok) {
-        throw new Error("Bad network response");
-      }
+      if (!response.ok) throw new Error("Bad network response");
       return response.json();
     })
     .then((data) => {
-      localStorage.setItem("name", JSON.stringify(data));
-
-      console.log(data.drinks);
+      localStorage.setItem("drinks", JSON.stringify(data));
       const drinkSection = document.getElementById("drink-section");
-
-      // Clear previous search results
       drinkSection.innerHTML = "";
 
       const drinks = data.drinks;
-      drinks.forEach((drink) => {
-        displayDrink(drink);
-      });
+      if (drinks) {
+        drinks.forEach((drink) => displayDrink(drink));
+      } else {
+        drinkSection.innerHTML = "<p>No drinks found.</p>";
+      }
+    })
+    .catch((err) => console.error("Fetch error:", err));
+}
+
+// Meal fetch and display
+function getRecipeData(searchInput) {
+  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error("Bad network response");
+      return response.json();
+    })
+    .then((data) => {
+      localStorage.setItem("meals", JSON.stringify(data));
+      const recipeSection = document.getElementById("recipe-section");
+      recipeSection.innerHTML = "";
+
+      const meals = data.meals;
+      if (meals) {
+        meals.forEach((meal) => displayRecipes(meal));
+      } else {
+        recipeSection.innerHTML = "<p>No meals found.</p>";
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
     });
 }
+
+// Display meal
+function displayRecipes(meal) {
+  const recipeSection = document.getElementById("recipe-section");
+
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const title = document.createElement("h3");
+  title.textContent = meal.strMeal;
+
+  const img = document.createElement("img");
+  img.src = meal.strMealThumb;
+  img.alt = meal.strMeal;
+  img.style.width = "100%";
+
+  const instructions = document.createElement("p");
+  instructions.textContent = meal.strInstructions;
+
+  const ingredientsList = document.createElement("ul");
+  for (let i = 1; i <= 20; i++) {
+    const ingredient = meal[`strIngredient${i}`];
+    const measure = meal[`strMeasure${i}`];
+    if (ingredient && ingredient.trim()) {
+      const li = document.createElement("li");
+      li.textContent = `${measure} ${ingredient}`;
+      ingredientsList.appendChild(li);
+    }
+  }
+
+  card.appendChild(title);
+  card.appendChild(img);
+  card.appendChild(ingredientsList);
+  card.appendChild(instructions);
+
+  recipeSection.appendChild(card);
+}
+
+// Display drink
 function displayDrink(drink) {
   const drinkSection = document.getElementById("drink-section");
 
-  // Create a div element to hold the drink details
-  const drinkDetails = document.createElement("div");
+  const card = document.createElement("div");
+  card.classList.add("card");
 
-  // Display the drink title
-  const drinkTitle = document.createElement("h3");
-  drinkTitle.textContent = drink.strDrink;
-  drinkDetails.appendChild(drinkTitle);
+  const title = document.createElement("h3");
+  title.textContent = drink.strDrink;
 
-  // Display the drink instructions
-  const drinkInstructions = document.createElement("p");
-  drinkInstructions.textContent = drink.strInstructions;
-  drinkDetails.appendChild(drinkInstructions);
+  const img = document.createElement("img");
+  img.src = drink.strDrinkThumb;
+  img.alt = drink.strDrink;
+  img.style.width = "150px";
 
-  // Display the drink image
-  const drinkImage = document.createElement("img");
-  drinkImage.style.width = "150px";
-  drinkImage.src = drink.strDrinkThumb;
-  drinkImage.alt = drink.strDrink;
-  drinkDetails.appendChild(drinkImage);
+  const instructions = document.createElement("p");
+  instructions.textContent = drink.strInstructions;
 
-  drinkSection.appendChild(drinkDetails);
+  card.appendChild(title);
+  card.appendChild(img);
+  card.appendChild(instructions);
+
+  drinkSection.appendChild(card);
 }
-
-drinkform.addEventListener("submit", getdrinkData);
