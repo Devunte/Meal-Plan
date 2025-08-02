@@ -3,26 +3,24 @@
   padding: 1%;
   text-transform: uppercase;
 }
-
 header {
   margin: .5%;
   border-bottom: 3px solid grey;
+  
 }
-
-header h1 {
+header h1{
   font-size: 70px;
   text-shadow: 2px 2px 2px grey;
 }
-
 nav a {
   text-decoration: none;
   color: inherit;
   text-shadow: 2px 2px 2px grey;
 }
-
 #form-container {
   display: none;
 }
+
 
 body {
   font-family: "Lexend Peta", sans-serif;
@@ -38,6 +36,7 @@ img {
   box-shadow: 2px 2px 2px grey;
   margin: 40px;
   border-radius: 5px;
+  
 }
 
 .card {
@@ -45,11 +44,9 @@ img {
   border-radius: 5px;
   margin-bottom: 20px;
 }
-
 .card-body {
   padding: 20px;
 }
-
 h3 {
   margin-top: 0;
   text-transform: uppercase;
@@ -65,41 +62,37 @@ h3 {
 .content-container {
   display: flex;
 }
-
 .ingredients {
   flex: 1;
 }
-
 .recipe-image {
   max-width: 100%;
 }
-
-.recipe h1 {
+.recipe h1{
   text-decoration: underline 2px grey;
   margin-bottom: 5px;
-}
 
-#favorites-container a {
+
+}
+#favorites-container a{
   color: grey;
+
 }
 
-.favorites h1 {
+.favorites h1{
   text-decoration: underline 2px grey;
 }
 
-.about h1 {
+.about h1{
   text-decoration: underline 2px grey;
   margin-bottom: 5px;
 }
-
-.about p {
+.about p{
   margin: 8px;
 }
-
-.about a {
+.about a{
   color: grey;
 }
-
-.about li {
+.about li{
   margin: 10px;
 }
