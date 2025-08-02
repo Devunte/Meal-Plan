@@ -1,98 +1,95 @@
 * {
-  margin: 2px;
-  padding: 1%;
-  text-transform: uppercase;
+  margin: 2px;
+  padding: 1%;
+  text-transform: uppercase;
 }
 header {
-  margin: .5%;
-  border-bottom: 3px solid grey;
-  
+  margin: .5%;
+  border-bottom: 3px solid grey;
 }
 header h1{
-  font-size: 70px;
-  text-shadow: 2px 2px 2px grey;
+  font-size: 70px;
+  text-shadow: 2px 2px 2px grey;
 }
 nav a {
-  text-decoration: none;
-  color: inherit;
-  text-shadow: 2px 2px 2px grey;
+  text-decoration: none;
+  color: inherit;
+  text-shadow: 2px 2px 2px grey;
 }
 #form-container {
-  display: none;
+  display: none;
 }
-
-
 body {
-  font-family: "Lexend Peta", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+  font-family: "Lexend Peta", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
-
 img {
-  width: 460px;
-  height: 250px;
-  justify-content: center;
-  box-shadow: 2px 2px 2px grey;
-  margin: 40px;
-  border-radius: 5px;
-  
+  width: 460px;
+  height: 250px;
+  justify-content: center;
+  box-shadow: 2px 2px 2px grey;
+  margin: 40px;
+  border-radius: 5px;
 }
-
 .card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 .card-body {
-  padding: 20px;
+  padding: 20px;
 }
 h3 {
-  margin-top: 0;
-  text-transform: uppercase;
-  padding-bottom: 2%;
+  margin-top: 0;
+  text-transform: uppercase;
+  padding-bottom: 2%;
 }
-
 .title-container {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 }
-
 .content-container {
-  display: flex;
+  display: flex;
 }
 .ingredients {
-  flex: 1;
+  flex: 1;
 }
 .recipe-image {
-  max-width: 100%;
+  max-width: 100%;
 }
 .recipe h1{
-  text-decoration: underline 2px grey;
-  margin-bottom: 5px;
-
-
+  text-decoration: underline 2px grey;
+  margin-bottom: 5px;
 }
 #favorites-container a{
-  color: grey;
-
+  color: grey;
 }
-
 .favorites h1{
-  text-decoration: underline 2px grey;
+  text-decoration: underline 2px grey;
 }
-
 .about h1{
+  text-decoration: underline 2px grey;
+  margin-bottom: 5px;
+}
+.about p{
+  margin: 8px;
+}
+.about a{
+  color: grey;
+}
+.about li{
+  margin: 10px;
+}
+/* New rule to style recipe and drink titles in the cards */
+.card h3 {
   text-decoration: underline 2px grey;
   margin-bottom: 5px;
 }
-.about p{
-  margin: 8px;
-}
-.about a{
-  color: grey;
-}
-.about li{
-  margin: 10px;
+/* New rule for styling the favorites links */
+.favorites-container a {
+  text-decoration: underline 2px grey;
+  color: inherit;
 }
