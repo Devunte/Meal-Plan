@@ -16,99 +16,100 @@
     />
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
+
   <body>
-    <header
-      class="is-flex is-justify-content-space-between is-align-items-center is-size-2 has-text-success hsl(141, 71%, 48%)"
-    >
-      <h1>Meal Prep</h1>
-      <nav><a href="#favorites">Favorites</a>|<a href="#about">About</a></nav>
+    <header class="is-flex is-justify-content-space-between is-align-items-center has-background-success-light p-4">
+      <h1 class="title has-text-success-dark">Meal Prep</h1>
+      <nav>
+        <a href="#favorites" class="has-text-success-dark">Favorites</a> |
+        <a href="#about" class="has-text-success-dark">About</a>
+      </nav>
     </header>
-    <section
-      class="is-flex is-justify-content-center is-align-items-center"
-    >
-      <img src="chicekn.jpg" />
-      <img src="cocktails.jpg" />
-      <img src="Greens.jpg" />
+
+    <section class="is-flex is-justify-content-center is-align-items-center p-4">
+      <img src="chicekn.jpg" alt="Chicken" class="image mx-2" />
+      <img src="cocktails.jpg" alt="Cocktails" class="image mx-2" />
+      <img src="Greens.jpg" alt="Greens" class="image mx-2" />
     </section>
 
-    <main
-      class="is-inline-column has-text-centered has-text-success hsl(141, 71%, 48%)"
-    >
-      <div class="recipe-list">
-        <!-- Recipes will appear here -->
-        <!-- Example Recipe -->
-        <div class="recipe">
-          <h1>Welcome to Meal Prep</h1>
-          <p>
-            We'll give you recipes, the ingredients, and everything else you
-            need!
-          </p>
-        </div>
+    <main class="section has-text-centered">
+      <div class="box has-background-success-light">
+        <h1 class="title">Welcome to Meal Prep</h1>
+        <p class="subtitle">
+          We'll give you recipes, the ingredients, and everything else you
+          need!
+        </p>
       </div>
 
-      <section class="pt-6 columns">
-        <div
-          class="column is-one-fifth box has-text-success hsl(141, 71%, 48%) p-6 search-bar"
-        >
-          <h2>Meal Search</h2>
-          <!-- Search form -->
-          <form class="pb-6" id="search-form">
-            <input
-              class="input is-danger is-focused is-primary"
-              type="text"
-              id="meal-input"
-              name="meal-input"
-              placeholder="Enter meal keywords..."
-            />
-            <button class="button is-danger m-2" type="submit">Search</button>
-          </form>
-          <h2>Drink Search</h2>
-          <form id="drink-form">
-            <input
-              class="input is-danger is-focused is-primary"
-              type="text"
-              id="drink-input"
-              name="drink-input"
-              placeholder="Enter drink keywords..."
-            />
-            <button class="button is-danger m-2" type="submit">Search</button>
-          </form>
-          <!-- Meal inputs -->
-        </div>
-        
-        <div
-          class="column is-two-fifths box has-text-success hsl(141, 71%, 48%) p-6 search-bar"
-        >
-          <main class="has-text-centered" id="recipe-section">
-            <!-- Recipes will load here -->
-          </main>
-        </div>
-        <div
-          class="column is-two-fifths box has-text-success hsl(141, 71%, 48%) p-6 search-bar"
-        >
-          <main class="has-text-centered" id="drink-section">
-            <!-- Drinks will load here -->
-          </main>
-        </div>
-      </section>
-      <!-- Favorites section for meals and drinks -->
-      <section class="favorites" id="favorites">
-        <h1>Favorites</h1>
-        <div class="favorites-container" id="favorites-container"></div>
-      </section>
-    
-    <footer class="about" id="about">
-      <h1>About the Developers</h1>
-      <p>Click the names below to see their portfolio</p>
-      <ul>
-        <li><a href="">- Christopher Blue -</a></li>
-        
-        <li><a href="https://devunte.github.io/Portfolio/">- Devunte Dawson -</a></li>
+      <section class="columns mt-6">
+        <!-- Search Column -->
+        <div class="column is-one-fifth">
+          <div class="box">
+            <h2 class="subtitle">Meal Search</h2>
+            <form id="search-form" class="mb-4">
+              <input
+                class="input is-primary"
+                type="text"
+                id="meal-input"
+                name="meal-input"
+                placeholder="Enter meal keywords..."
+              />
+              <button class="button is-success mt-2" type="submit">Search</button>
+            </form>
 
-        <li><a href="https://mlucan2.github.io/myron-professional-portfolio/">- Myron Lucan -</a></li>
-      </ul>
-    </footer>
-  </main>
+            <h2 class="subtitle">Drink Search</h2>
+            <form id="drink-form">
+              <input
+                class="input is-primary"
+                type="text"
+                id="drink-input"
+                name="drink-input"
+                placeholder="Enter drink keywords..."
+              />
+              <button class="button is-success mt-2" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Recipes Display -->
+        <div class="column is-two-fifths">
+          <div class="box" id="recipe-section">
+            <!-- Recipes will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Drinks Display -->
+        <div class="column is-two-fifths">
+          <div class="box" id="drink-section">
+            <!-- Drinks will be inserted here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Favorites Section -->
+      <section class="section" id="favorites">
+        <h1 class="title has-text-success-dark">Favorites</h1>
+        <div class="box" id="favorites-container">
+          <!-- Favorites will be shown here -->
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <footer class="section" id="about">
+        <h1 class="title">About the Developers</h1>
+        <p class="subtitle">Click the names below to see their portfolios:</p>
+        <ul>
+          <li><a href="#">- Christopher Blue -</a></li>
+          <li>
+            <a href="https://devunte.github.io/Portfolio/">- Devunte Dawson -</a>
+          </li>
+          <li>
+            <a href="https://mlucan2.github.io/myron-professional-portfolio/">- Myron Lucan -</a>
+          </li>
+        </ul>
+      </footer>
+    </main>
+
     <script src="script.js"></script>
   </body>
 </html>
