@@ -1,53 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Recipe & Drink Finder</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-  <header>
-    <h1>Food & Drink Finder</h1>
-    <nav>
-      <a href="#recipe-section">Recipes</a> |
-      <a href="#drink-section">Drinks</a> |
-      <a href="#favorites-container">Favorites</a> |
-      <a href="#about">About</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- Recipe Search Form -->
-    <section>
-      <form id="search-form">
-        <label for="meal-input">Search Meal:</label>
-        <input type="text" id="meal-input" placeholder="e.g. Chicken Alfredo" required />
-        <button type="submit">Search</button>
-      </form>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Prep Website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header
+      class="is-flex is-justify-content-space-between is-align-items-center is-size-2 has-text-success hsl(141, 71%, 48%)"
+    >
+      <h1>Meal Prep</h1>
+      <nav><a href="#favorites">Favorites</a>|<a href="#about">About</a></nav>
+    </header>
+    <section
+      class="is-flex is-justify-content-center is-align-items-center"
+    >
+      <img src="chicekn.jpg" />
+      <img src="cocktails.jpg" />
+      <img src="Greens.jpg" />
     </section>
 
-    <!-- Recipe Scroll Section -->
-    <section id="recipe-section" class="box scroll-x">
-      <!-- JS will inject recipe cards here -->
-    </section>
+    <main
+      class="is-inline-column has-text-centered has-text-success hsl(141, 71%, 48%)"
+    >
+      <div class="recipe-list">
+        <!-- Recipes will appear here -->
+        <!-- Example Recipe -->
+        <div class="recipe">
+          <h1>Welcome to Meal Prep</h1>
+          <p>
+            We'll give you recipes, the ingredients, and everything else you
+            need!
+          </p>
+        </div>
+      </div>
 
-    <!-- Drink Search Form -->
-    <section>
-      <form id="drink-form">
-        <label for="drink-input">Search Drink:</label>
-        <input type="text" id="drink-input" placeholder="e.g. Margarita" required />
-        <button type="submit">Search</button>
-      </form>
-    </section>
+      <section class="pt-6 columns">
+        <div
+          class="column is-one-fifth box has-text-success hsl(141, 71%, 48%) p-6 search-bar"
+        >
+          <h2>Meal Search</h2>
+          <!-- Search form -->
+          <form class="pb-6" id="search-form">
+            <input
+              class="input is-danger is-focused is-primary"
+              type="text"
+              id="meal-input"
+              name="meal-input"
+              placeholder="Enter meal keywords..."
+            />
+            <button class="button is-danger m-2" type="submit">Search</button>
+          </form>
+          <h2>Drink Search</h2>
+          <form id="drink-form">
+            <input
+              class="input is-danger is-focused is-primary"
+              type="text"
+              id="drink-input"
+              name="drink-input"
+              placeholder="Enter drink keywords..."
+            />
+            <button class="button is-danger m-2" type="submit">Search</button>
+          </form>
+          <!-- Meal inputs -->
+        </div>
+        
+        <div
+          class="column is-two-fifths box has-text-success hsl(141, 71%, 48%) p-6 search-bar"
+        >
+          <main class="has-text-centered" id="recipe-section">
+            <!-- Recipes will load here -->
+          </main>
+        </div>
+        <div
+          class="column is-two-fifths box has-text-success hsl(141, 71%, 48%) p-6 search-bar"
+        >
+          <main class="has-text-centered" id="drink-section">
+            <!-- Drinks will load here -->
+          </main>
+        </div>
+      </section>
+      <!-- Favorites section for meals and drinks -->
+      <section class="favorites" id="favorites">
+        <h1>Favorites</h1>
+        <div class="favorites-container" id="favorites-container"></div>
+      </section>
+    
+    <footer class="about" id="about">
+      <h1>About the Developers</h1>
+      <p>Click the names below to see their portfolio</p>
+      <ul>
+        <li><a href="">- Christopher Blue -</a></li>
+        
+        <li><a href="https://devunte.github.io/Portfolio/">- Devunte Dawson -</a></li>
 
-    <!-- Drink Scroll Section -->
-    <section id="drink-section" class="box scroll-x">
-      <!-- JS will inject drink cards here -->
-    </section>
-
-    <!-- Favorites Section -->
-    <section id="favorites-container" class="f
+        <li><a href="https://mlucan2.github.io/myron-professional-portfolio/">- Myron Lucan -</a></li>
+      </ul>
+    </footer>
+  </main>
+    <script src="script.js"></script>
+  </body>
+</html>
