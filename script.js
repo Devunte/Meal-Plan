@@ -1,35 +1,63 @@
 let searchInput = document.getElementById("meal-input").value;
 console.log(searchInput);
 
+//   fetch(url)
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Bad network response");
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       localStorage.setItem("recipes", JSON.stringify(data));
+
+//       console.log(data.hits);
+//       const recipeSection = document.getElementById("recipe-section");
+
+//       // Clear previous search results
+//       recipeSection.innerHTML = "";
+
+//       const recipes = data.hits;
+//       recipes.forEach((recipe) => {
+//         displayRecipes(recipe.recipe);
+//       });
+//     })
+//     .catch((error) => {
+//       console.error("Bad fetch:", error);
+//     });
+// }
+
 function getRecipeData() {
   const apiKey = `5ca76f850838b3aa7817d13c9750a1a5`;
   const apiId = `6245cd9b`;
-  const url = `https://api.edamam.com/search?q=${searchInput}&app_id=${apiId}&app_key=${apiKey}`;
+  const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=chicken";
 
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Bad network response");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      localStorage.setItem("recipes", JSON.stringify(data));
 
-      console.log(data.hits);
-      const recipeSection = document.getElementById("recipe-section");
 
-      // Clear previous search results
-      recipeSection.innerHTML = "";
+fetch(url)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Bad network response");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    // Store data in localStorage
+    localStorage.setItem("meals", JSON.stringify(data));
 
-      const recipes = data.hits;
-      recipes.forEach((recipe) => {
-        displayRecipes(recipe.recipe);
-      });
-    })
-    .catch((error) => {
-      console.error("Bad fetch:", error);
+    console.log(data.meals);
+
+    const recipeSection = document.getElementById("recipe-section");
+    recipeSection.innerHTML = "";
+
+    const recipes = data.meals;
+    recipes.forEach((meal) => {
+      displayRecipes(meal); // assuming this function is defined elsewhere
     });
+  })
+  .catch((error) => {
+    console.error("Bad fetch:", error);
+  });
 }
 
 //Todo: Create a function and event that allows you to fill in the form and pull recipes from the api to the local storage once the submit button is pushed.
