@@ -1,95 +1,275 @@
+/* Custom Color Palette */
+:root {
+  --primary-color: #2ECC71; /* Vibrant green */
+  --secondary-color: #E74C3C; /* Bold red for accents */
+  --text-color: #333333; /* Dark gray for readability */
+  --background-color: #f7f9fc; /* Light gray background */
+  --card-background: #ffffff; /* White card background */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
 * {
-  margin: 2px;
-  padding: 1%;
-  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+html, body {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  font-family: "Lexend Peta", sans-serif;
+  color: var(--text-color);
+}
+
+/* Header Section */
 header {
-  margin: .5%;
-  border-bottom: 3px solid grey;
+  padding: 1% 2%;
+  border-bottom: 3px solid var(--primary-color);
+  background-color: var(--card-background);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
-header h1{
-  font-size: 70px;
-  text-shadow: 2px 2px 2px grey;
+
+header h1 {
+  font-size: 70px;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 2px var(--shadow-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
+
 nav a {
-  text-decoration: none;
-  color: inherit;
-  text-shadow: 2px 2px 2px grey;
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0 10px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
-#form-container {
-  display: none;
+
+nav a:hover {
+  color: var(--secondary-color);
 }
-body {
-  font-family: "Lexend Peta", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
+
+/* Hero Image Section */
+.is-flex.is-justify-content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
 }
+
 img {
-  width: 460px;
-  height: 250px;
-  justify-content: center;
-  box-shadow: 2px 2px 2px grey;
-  margin: 40px;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 460px;
+  height: 250px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
+
+img:hover {
+  transform: scale(1.03);
+}
+
+/* Main Content and Columns */
+main {
+  padding: 20px;
+}
+
+.recipe-list h1, .recipe-list p {
+  text-align: center;
+}
+
+.recipe h1 {
+  text-decoration: underline 2px var(--primary-color);
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.columns {
+  margin-top: 20px;
+}
+
+.box {
+  background-color: var(--card-background);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 20px;
+  margin: 10px;
+}
+
+.search-bar h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+/* Form Styles */
+.input {
+  border-color: var(--primary-color);
+  box-shadow: none;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.125em rgba(46, 204, 113, 0.25);
+}
+
+.button.is-danger {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button.is-danger:hover {
+  background-color: #c0392b;
+}
+
+/* Card Styles */
 .card {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  background-color: var(--card-background);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px var(--shadow-color);
+}
+
 .card-body {
-  padding: 20px;
+  padding: 20px;
 }
-h3 {
-  margin-top: 0;
-  text-transform: uppercase;
-  padding-bottom: 2%;
-}
-.title-container {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-}
-.content-container {
-  display: flex;
-}
-.ingredients {
-  flex: 1;
-}
-.recipe-image {
-  max-width: 100%;
-}
-.recipe h1{
-  text-decoration: underline 2px grey;
-  margin-bottom: 5px;
-}
-#favorites-container a{
-  color: grey;
-}
-.favorites h1{
-  text-decoration: underline 2px grey;
-}
-.about h1{
-  text-decoration: underline 2px grey;
-  margin-bottom: 5px;
-}
-.about p{
-  margin: 8px;
-}
-.about a{
-  color: grey;
-}
-.about li{
-  margin: 10px;
-}
-/* New rule to style recipe and drink titles in the cards */
+
 .card h3 {
-  text-decoration: underline 2px grey;
-  margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 0;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-color);
 }
-/* New rule for styling the favorites links */
-.favorites-container a {
-  text-decoration: underline 2px grey;
-  color: inherit;
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btn-favorite {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-favorite:hover {
+  background-color: var(--secondary-color);
+}
+
+.content-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ingredients {
+  flex: 1 1 40%;
+}
+
+.image-container {
+  flex: 1 1 50%;
+  text-align: center;
+}
+
+.recipe-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.image-container p {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: #777;
+}
+
+/* Favorites Section */
+.favorites, .about {
+  padding: 20px;
+  margin-top: 40px;
+  background-color: var(--card-background);
+  border-top: 2px solid var(--primary-color);
+}
+
+.favorites h1, .about h1 {
+  text-decoration: underline 2px var(--primary-color);
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+#favorites-container a {
+  color: var(--text-color);
+  text-decoration: underline 2px var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+#favorites-container a:hover {
+  color: var(--secondary-color);
+}
+
+.favorite-card {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+/* About Section */
+.about p {
+  margin: 8px 0;
+}
+
+.about ul {
+  list-style: none;
+}
+
+.about li {
+  margin: 10px 0;
+}
+
+.about a {
+  color: var(--text-color);
+  text-decoration: underline 2px var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.about a:hover {
+  color: var(--secondary-color);
 }
