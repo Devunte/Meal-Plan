@@ -1,7 +1,7 @@
 /* Custom Color Palette */
 :root {
-  --primary-color: #2ECC71; /* Vibrant green */
-  --secondary-color: #E74C3C; /* Bold red for accents */
+  --primary-color: #2ecc71; /* Vibrant green */
+  --secondary-color: #e74c3c; /* Bold red for accents */
   --text-color: #333333; /* Dark gray for readability */
   --background-color: #f7f9fc; /* Light gray background */
   --card-background: #ffffff; /* White card background */
@@ -15,7 +15,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   background-color: var(--background-color);
   font-family: "Lexend Peta", sans-serif;
@@ -64,7 +65,7 @@ nav a:hover {
   gap: 20px;
 }
 
-img {
+.hero-images img {
   width: 100%;
   max-width: 460px;
   height: 250px;
@@ -74,7 +75,7 @@ img {
   transition: transform 0.3s ease;
 }
 
-img:hover {
+.hero-images img:hover {
   transform: scale(1.03);
 }
 
@@ -83,7 +84,8 @@ main {
   padding: 20px;
 }
 
-.recipe-list h1, .recipe-list p {
+.recipe-list h1,
+.recipe-list p {
   text-align: center;
 }
 
@@ -138,8 +140,9 @@ main {
   background-color: #c0392b;
 }
 
-/* Card Styles */
-.card {
+/* Card Styles for Recipes and Drinks */
+.recipe-card,
+.drink-card {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -148,16 +151,19 @@ main {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.recipe-card:hover,
+.drink-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px var(--shadow-color);
 }
 
-.card-body {
+.recipe-card .card-content,
+.drink-card .card-content {
   padding: 20px;
 }
 
-.card h3 {
+.recipe-card h3,
+.drink-card h4 {
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: 0;
@@ -166,67 +172,27 @@ main {
   border-bottom: 2px solid var(--primary-color);
 }
 
-.title-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+.drink-card {
+  padding: 10px;
 }
 
-.btn-favorite {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.btn-favorite:hover {
-  background-color: var(--secondary-color);
-}
-
-.content-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.ingredients {
-  flex: 1 1 40%;
-}
-
-.image-container {
-  flex: 1 1 50%;
-  text-align: center;
-}
-
-.recipe-image {
-  max-width: 100%;
-  height: auto;
+.drink-card img {
+  width: 100%;
   border-radius: 8px;
-  cursor: pointer;
-}
-
-.image-container p {
-  font-style: italic;
-  font-size: 0.9rem;
-  margin-top: 5px;
-  color: #777;
+  margin-bottom: 10px;
 }
 
 /* Favorites Section */
-.favorites, .about {
+.favorites,
+.about {
   padding: 20px;
   margin-top: 40px;
   background-color: var(--card-background);
   border-top: 2px solid var(--primary-color);
 }
 
-.favorites h1, .about h1 {
+.favorites h1,
+.about h1 {
   text-decoration: underline 2px var(--primary-color);
   color: var(--primary-color);
   margin-bottom: 15px;
