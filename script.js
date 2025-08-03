@@ -1,7 +1,7 @@
 function getRecipeData() {
-  const apiKey = "YOUR_SPOONACULAR_API_KEY"; // 🔁 Replace with your API key
+  const apiKey = `1`; // TheMealDB's free test API key
   const searchInput = document.getElementById("meal-input").value;
-  const url = `https://api.spoonacular.com/recipes/complexSearch?query=${searchInput}&number=10&addRecipeInformation=true&apiKey=${apiKey}`;
+  const url = `https://www.themealdb.com/api/json/v1/${apiKey}/search.php?s=${searchInput}`;
 
   fetch(url)
     .then((response) => {
@@ -15,8 +15,9 @@ function getRecipeData() {
       const recipeSection = document.getElementById("recipe-section");
       recipeSection.innerHTML = "";
 
-      if (data.results && data.results.length > 0) {
-        data.results.forEach((recipe) => {
+      if (data.meals) {
+        const recipes = data.meals;
+        recipes.forEach((recipe) => {
           displayRecipes(recipe);
         });
       } else {
@@ -24,7 +25,7 @@ function getRecipeData() {
       }
     })
     .catch((error) => {
-      console.error("Bad fetch:", error);
+      console.error("Fetch error:", error);
       document.getElementById("recipe-section").innerHTML = "<p>Failed to fetch recipes. Please try again.</p>";
     });
 }
@@ -36,7 +37,7 @@ function handleSearchFormSubmit(event) {
   const searchInput = document.getElementById("meal-input").value;
 
   if (!searchInput) {
-    console.error("Input search value");
+    console.error("Please enter a recipe name");
     return;
   }
   getRecipeData();
@@ -58,7 +59,7 @@ function displayRecipes(recipe) {
   recipeBody.appendChild(titleContainer);
 
   const titleEl = document.createElement("h3");
-  titleEl.textContent = recipe.title;
+  titleEl.textContent = recipe.strMeal;
   titleContainer.appendChild(titleEl);
 
   const favButton = document.createElement("button");
@@ -83,14 +84,14 @@ function displayRecipes(recipe) {
   ingredientsTitle.textContent = "Ingredients";
   ingredientsContainer.appendChild(ingredientsTitle);
 
-  if (recipe.extendedIngredients) {
-    recipe.extendedIngredients.forEach((item) => {
+  for (let i = 1; i <= 20; i++) {
+    const ingredient = recipe[`strIngredient${i}`];
+    const measure = recipe[`strMeasure${i}`];
+    if (ingredient && ingredient.trim() !== "") {
       const ingredientEl = document.createElement("p");
-      ingredientEl.textContent = `${item.original}`;
+      ingredientEl.textContent = `${measure || ""} ${ingredient}`;
       ingredientsContainer.appendChild(ingredientEl);
-    });
-  } else {
-    ingredientsContainer.innerHTML += "<p>No ingredients available</p>";
+    }
   }
 
   const imageContainer = document.createElement("div");
@@ -98,12 +99,12 @@ function displayRecipes(recipe) {
   contentContainer.appendChild(imageContainer);
 
   const imageEl = document.createElement("img");
-  imageEl.src = recipe.image;
+  imageEl.src = recipe.strMealThumb;
   imageEl.classList.add("recipe-image");
   imageEl.style.maxWidth = "100%";
   imageEl.addEventListener("click", () => {
-    if (recipe.sourceUrl) {
-      window.open(recipe.sourceUrl, "_blank");
+    if (recipe.strSource) {
+      window.open(recipe.strSource, "_blank");
     }
   });
   imageContainer.appendChild(imageEl);
@@ -113,7 +114,7 @@ function displayRecipes(recipe) {
   imageContainer.appendChild(imgMessageEl);
 
   const instructionsEl = document.createElement("p");
-  instructionsEl.innerHTML = recipe.summary || "No description available.";
+  instructionsEl.textContent = recipe.strInstructions;
   recipeBody.appendChild(instructionsEl);
 
   recipeSection.appendChild(recipeCard);
@@ -121,16 +122,19 @@ function displayRecipes(recipe) {
 
 function addToFavorites(recipe) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  if (!favorites.some((fav) => fav.id === recipe.id)) {
+  if (!favorites.some(fav => fav.idMeal === recipe.idMeal)) {
     favorites.push(recipe);
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  displayFavorites();
+});
+
 function displayFavorites() {
   const favoritesContainer = document.getElementById("favorites-container");
   if (!favoritesContainer) return;
-
   favoritesContainer.innerHTML = "";
 
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -141,8 +145,8 @@ function displayFavorites() {
 
 function displayFavoriteRecipe(recipe, container) {
   const titleLink = document.createElement("a");
-  titleLink.textContent = recipe.title;
-  titleLink.href = recipe.sourceUrl || "#";
+  titleLink.textContent = recipe.strMeal;
+  titleLink.href = recipe.strSource || "#";
   titleLink.target = "_blank";
 
   const recipeCard = document.createElement("div");
@@ -155,8 +159,3 @@ function displayFavoriteRecipe(recipe, container) {
   recipeCard.appendChild(titleLink);
   container.appendChild(recipeCard);
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  displayFavorites();
-});
-
