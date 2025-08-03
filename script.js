@@ -59,7 +59,7 @@ function displayRecipes(meals) {
         </figure>
         <p><strong>Category:</strong> ${meal.strCategory || "N/A"}</p>
         <p><strong>Area:</strong> ${meal.strArea || "N/A"}</p>
-        <p class="has-text-left mt-2"><strong>Instructions:</strong> ${meal.strInstructions.slice(0, 300)}...</p>
+        <p class="has-text-left mt-2"><strong>Instructions:</strong> ${meal.strInstructions}</p>
         <a href="${meal.strSource || "#"}" target="_blank" class="button is-link mt-2">View Full Recipe</a>
       </div>
     `;
@@ -85,7 +85,7 @@ function displayDrinks(drinks) {
       <div class="card-content">
         <h4>${drink.strDrink}</h4>
         <p><strong>Category:</strong> ${drink.strCategory || "N/A"}</p>
-        <p class="has-text-left mt-2"><strong>Instructions:</strong> ${drink.strInstructions.slice(0, 100)}...</p>
+        <p class="has-text-left mt-2"><strong>Instructions:</strong> ${drink.strInstructions}</p>
       </div>
     `;
     drinkSection.appendChild(drinkCard);
