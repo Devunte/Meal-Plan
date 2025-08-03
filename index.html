@@ -23,31 +23,23 @@
       <h1>Meal Prep</h1>
       <nav><a href="#favorites">Favorites</a>|<a href="#about">About</a></nav>
     </header>
-    <section
-      class="is-flex is-justify-content-center is-align-items-center"
-    >
+
+    <section class="is-flex is-justify-content-center is-align-items-center">
       <img src="chicekn.jpg" />
       <img src="cocktails.jpg" />
       <img src="Greens.jpg" />
     </section>
 
-    <main
-      class="is-inline-block has-text-centered has-text-success"
-    >
+    <main class="is-inline-block has-text-centered has-text-success">
       <div class="recipe-list">
         <div class="recipe">
           <h1>Welcome to Meal Prep</h1>
-          <p>
-            We'll give you recipes, the ingredients, and everything else you
-            need!
-          </p>
+          <p>We'll give you recipes, the ingredients, and everything else you need!</p>
         </div>
       </div>
 
       <section class="pt-6 columns">
-        <div
-          class="column is-one-fifth box has-text-success p-6 search-bar"
-        >
+        <div class="column is-one-fifth box has-text-success p-6 search-bar">
           <h2>Meal Search</h2>
           <form class="pb-6" id="search-form">
             <input
@@ -59,49 +51,87 @@
             />
             <button class="button is-danger m-2" type="submit">Search</button>
           </form>
-          <h2>Drink Search</h2>
-          <form id="drink-form">
-            <input
-              class="input is-danger is-focused is-primary"
-              type="text"
-              id="drink-input"
-              name="drink-input"
-              placeholder="Enter drink keywords..."
-            />
-            <button class="button is-danger m-2" type="submit">Search</button>
-          </form>
-          </div>
-        
-        <div
-          class="column is-two-fifths box has-text-success p-6 search-bar"
-        >
-          <main class="has-text-centered" id="recipe-section">
-            </main>
         </div>
-        <div
-          class="column is-two-fifths box has-text-success p-6 search-bar"
-        >
-          <main class="has-text-centered" id="drink-section">
-            </main>
+
+        <div class="column is-two-fifths box has-text-success p-6 search-bar">
+          <main class="has-text-centered" id="recipe-section"></main>
+        </div>
+
+        <div class="column is-two-fifths box has-text-success p-6 search-bar">
+          <main class="has-text-centered" id="drink-section"></main>
         </div>
       </section>
+
       <section class="favorites" id="favorites">
         <h1>Favorites</h1>
         <div class="favorites-container" id="favorites-container"></div>
       </section>
-    
-    <footer class="about" id="about">
-      <h1>About the Developers</h1>
-      <p>Click the names below to see their portfolio</p>
-      <ul>
-        <li><a href="">- Christopher Blue -</a></li>
-        
-        <li><a href="https://devunte.github.io/Portfolio/">- Devunte Dawson -</a></li>
 
-        <li><a href="https://mlucan2.github.io/myron-professional-portfolio/">- Myron Lucan -</a></li>
-      </ul>
-    </footer>
-  </main>
-    <script src="script.js"></script>
+      <footer class="about" id="about">
+        <h1>About the Developers</h1>
+        <p>Click the names below to see their portfolio</p>
+        <ul>
+          <li><a href="">- Christopher Blue -</a></li>
+          <li><a href="https://devunte.github.io/Portfolio/">- Devunte Dawson -</a></li>
+          <li><a href="https://mlucan2.github.io/myron-professional-portfolio/">- Myron Lucan -</a></li>
+        </ul>
+      </footer>
+    </main>
+
+    <!-- JavaScript Section -->
+    <script>
+      document.getElementById("search-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const query = document.getElementById("meal-input").value.trim();
+        if (query) {
+          getMeals(query);
+        }
+      });
+
+      function getMeals(searchTerm) {
+        const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + encodeURIComponent(searchTerm);
+
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network error");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            displayMeals(data.meals);
+          })
+          .catch((error) => {
+            console.error("Fetch error:", error);
+            document.getElementById("recipe-section").innerHTML = "<p>No recipes found.</p>";
+          });
+      }
+
+      function displayMeals(meals) {
+        const section = document.getElementById("recipe-section");
+        section.innerHTML = "";
+
+        if (!meals) {
+          section.innerHTML = "<p>No recipes found for your search.</p>";
+          return;
+        }
+
+        meals.forEach((meal) => {
+          const mealDiv = document.createElement("div");
+          mealDiv.className = "box";
+          mealDiv.innerHTML = `
+            <h2 class="title is-4">${meal.strMeal}</h2>
+            <figure class="image is-4by3">
+              <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+            </figure>
+            <p><strong>Category:</strong> ${meal.strCategory || "N/A"}</p>
+            <p><strong>Area:</strong> ${meal.strArea || "N/A"}</p>
+            <p class="has-text-left mt-2"><strong>Instructions:</strong> ${meal.strInstructions.slice(0, 300)}...</p>
+            <a href="${meal.strSource || "#"}" target="_blank" class="button is-link mt-2">View Full Recipe</a>
+          `;
+          section.appendChild(mealDiv);
+        });
+      }
+    </script>
   </body>
 </html>
